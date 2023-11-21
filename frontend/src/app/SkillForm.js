@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import RadioInput from "./RadioInput.js"
 
 export default function SkillForm() {
