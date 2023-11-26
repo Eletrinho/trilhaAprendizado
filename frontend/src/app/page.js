@@ -6,10 +6,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.container}>
+      <div className='container bg-light bg-gradient p-4 rounded-1'>
         <SkillForm/>
       </div>
-      <div className={styles.container}>
+      <div className='container'>
       <Skills/>
       </div>
     </main>

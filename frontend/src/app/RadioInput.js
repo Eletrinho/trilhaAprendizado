@@ -5,17 +5,17 @@ export default function RadioInput({ onChange, option }) {
 
     return (
         <>
-            <div className="custom-control custom-radio">
+            <div className="form-check">
                 <input
                     type="radio"
                     id={ option.option }
                     name="confidence"
-                    className="custom-control-input"
+                    className="form-check-input"
                     onChange={ handleChange }
                     value = { option.id }
                     />
                     <label
-                        className="custom-control-label"
+                        className="form-check-label"
                         htmlFor={ option.option }
                         >
                         { option.option }

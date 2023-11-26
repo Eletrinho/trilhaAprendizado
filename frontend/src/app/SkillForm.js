@@ -11,13 +11,19 @@ export default function SkillForm() {
     }
     const handleSubmit = (event) => {
       event.preventDefault()
-      // console.log(inputs)
+      document.querySelector('#skill').value = ''
+      document.querySelector('#description').value = ''
+      console.log(inputs)
     }
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label><input name="skill" onChange={handleChange}/></label> <br />
-        <label><textarea name="description" onChange={handleChange}/></label> <br />
+        <div>
+          <label className='form-label' htmlFor='skill'>Nome da Habilidade</label>
+          <input className='form-control' id="skill" name="skill" onChange={handleChange}/>
+        </div>
+        <label className='form-label' htmlFor='description'>Descrição</label> 
+          <textarea className='form-control' id="description" name="description" onChange={handleChange}/>
         <div>
           Confiança sobre o assunto <br />
           <RadioInput option={{'id': 1, 'option': 'Aprendi muito pouco'}} onChange={handleChange} />
@@ -26,7 +32,7 @@ export default function SkillForm() {
           <RadioInput option={{'id': 4, 'option': 'Aprendi quase tudo'}} onChange={handleChange} />
           <RadioInput option={{'id': 5, 'option': 'Aprendi tudo'}} onChange={handleChange} />
         </div>
-        <button type='submit'>Submit</button>
+        <button className='btn btn-outline-primary mt-2' type='submit'>Submit</button>
       </form>
     </>
   )

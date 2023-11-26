@@ -30,7 +30,7 @@ export default function Skills() {
     return (
         <Accordion>
             {rows.map((row) => (
-                <span key={row.id}>{row}</span>
+                <span key={rows.indexOf(row)}>{row}</span>
             ))}
         </Accordion>
     )
