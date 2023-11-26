@@ -1,6 +1,6 @@
 export default function RadioInput({ onChange, option }) {
     const handleChange = event => {
-        onChange(event.target.value)
+        onChange(event)
     }
 
     return (
@@ -9,7 +9,7 @@ export default function RadioInput({ onChange, option }) {
                 <input
                     type="radio"
                     id={ option.option }
-                    name="customRadio"
+                    name="confidence"
                     className="custom-control-input"
                     onChange={ handleChange }
                     value = { option.id }
