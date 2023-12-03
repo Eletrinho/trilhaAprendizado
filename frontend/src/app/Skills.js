@@ -6,7 +6,16 @@ export default function Skills() {
         'id': 1,
         'name': "Python",
         'description': 'linguagem de programação',
-        'confidence': 5
+        'confidence': 5,
+        'subskill': [{
+            'name': "Django",
+            "description": "Framework",
+            "confidence": 4,
+        }, {
+            'name': "Flask",
+            "description": "Framework",
+            "confidence": 3,
+        }],
     },
     {
         'id': 2,
@@ -24,11 +33,16 @@ export default function Skills() {
     const rows = []
 
     for (let skill of skills) {
-        rows.push(<SkillAccordion id={skill.id} name={skill.name} description={skill.description} confidence={skill.confidence}/>)
+        if (skill.subskill){
+            rows.push(<SkillAccordion id={skill.id} name={skill.name} description={skill.description} confidence={skill.confidence} subskill={skill.subskill} />)
+        } else {
+            rows.push(<SkillAccordion id={skill.id} name={skill.name} description={skill.description} confidence={skill.confidence} />)
+        }
+            
     }
 
     return (
-        <Accordion>
+        <Accordion alwaysOpen>
             {rows.map((row) => (
                 <span key={rows.indexOf(row)}>{row}</span>
             ))}
