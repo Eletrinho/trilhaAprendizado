@@ -9,7 +9,7 @@ export default function RadioInput({ onChange, option }) {
                 <input
                     type="radio"
                     id={ option.option }
-                    name="confidence"
+                    name="confidence_about"
                     className="form-check-input"
                     onChange={ handleChange }
                     value = { option.id }
