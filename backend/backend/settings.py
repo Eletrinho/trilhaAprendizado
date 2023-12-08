@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     "corsheaders",
     "rest_framework",
+    "django_filters",
     "app",
 ]
 
@@ -57,6 +58,10 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 ROOT_URLCONF = "backend.urls"
 
