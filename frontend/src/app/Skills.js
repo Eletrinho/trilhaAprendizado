@@ -5,57 +5,51 @@ import Accordion from 'react-bootstrap/Accordion'
 import axios from 'axios'
 
 export default function Skills() {
-    // const skills = [{
-    //     'id': 1,
-    //     'name': "Python",
-    //     'description': 'linguagem de programação',
-    //     'confidence': 5,
-    //     'subskill': [{
-    //         'name': "Django",
-    //         "description": "Framework",
-    //         "confidence": 4,
-    //     }, {
-    //         'name': "Flask",
-    //         "description": "Framework",
-    //         "confidence": 3,
-    //     }],
-    // },
-    // {
-    //     'id': 2,
-    //     'name': "JavaScript",
-    //     'description': 'linguagem de programação 2',
-    //     'confidence': 3
-    // },
-    // {
-    //     'id': 3,
-    //     'name': "Java",
-    //     'description': 'linguagem de programação 3',
-    //     'confidence': 2
-    // }]
-    const rows = []
-    const [skills, setSkills] = useState([])
-    useEffect(() => {
-        axios.get("http://localhost:8000/api/skill/")
-            .then((res) => { setSkills(res.data) })
-            .catch((err) => { console.log(err) })
-    }, [])
-    for (let skill of skills) {
-        if (skill.subskill) {
-            rows.push(<SkillAccordion id={skill.id} name={skill.name} description={skill.description} confidence={skill.confidence_about} subskill={skill.subskill} />)
-        } else {
-            rows.push(<SkillAccordion id={skill.id} name={skill.name} description={skill.description} confidence={skill.confidence_about} />)
-        }
-    }
+  const [dataList, setDataList] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Primeira requisição para obter a lista de objetos e os dados adicionais
+        const [skillsResponse, subSkillsResponse] = await Promise.all([
+          fetch('http://localhost:8000/api/skill/').then(response => response.json()),
+          fetch('http://localhost:8000/api/subskill/').then(response => response.json())
+        ]);
 
-    console.log(rows)
-    return (
-        
-            <Accordion alwaysOpen>
-                {rows.map((row) => (
-                    <span key={rows.indexOf(row)}>{row}</span>
-                ))}
-            </Accordion>
-        
-    )
+        // Mapear skills e criar uma lista de subskills para cada skill
+        const updatedDataList = skillsResponse.map(skill => {
+          const relatedSubskills = subSkillsResponse.filter(subskill => subskill.skill === skill.id);
+          return { ...skill, subskills: relatedSubskills };
+        });
+
+        // Atualizar o estado com os dados obtidos
+        setDataList(updatedDataList);
+      } catch (error) {
+        console.error('Erro:', error);
+      }
+    };
+
+    fetchData();
+  }, []); // O array vazio como segundo argumento garante que o useEffect será executado apenas uma vez, equivalente a componentDidMount
+
+  const rows = dataList.map(skill => (
+    <SkillAccordion
+      key={skill.id}
+      id={skill.id}
+      name={skill.name}
+      description={skill.description}
+      confidence={skill.confidence_about}
+      subskills={skill.subskills} // Agora, subskills é uma lista de objetos
+    />
+  ));
+
+  return (
+
+    <Accordion alwaysOpen>
+      {rows.map((row) => (
+        <span key={rows.indexOf(row)}>{row}</span>
+      ))}
+    </Accordion>
+
+  )
 }
