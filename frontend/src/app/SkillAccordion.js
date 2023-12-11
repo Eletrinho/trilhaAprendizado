@@ -1,5 +1,6 @@
 'use client'
 import Accordion from 'react-bootstrap/Accordion';
+import StarRating from './StarRating';
 
 export default function SkillAccordion({ id, name, description, confidence, subskills = [] }) {
     return (
@@ -7,7 +8,7 @@ export default function SkillAccordion({ id, name, description, confidence, subs
             <Accordion.Header>{name}</Accordion.Header>
             <Accordion.Body>
                 <p>{description}</p>
-                <p>{confidence}</p>
+                <StarRating rating={confidence} />
                 {subskills.length > 0 &&
                     <Accordion>
                         {subskills.map((skill) => (
@@ -15,7 +16,7 @@ export default function SkillAccordion({ id, name, description, confidence, subs
                                 <Accordion.Header> {skill.name}</Accordion.Header>
                                 <Accordion.Body>
                                     <p>{skill.description}</p>
-                                    <p>{skill.confidence}</p>
+                                    <StarRating rating={skill.confidence_about} />
                                 </Accordion.Body>
                             </Accordion.Item>
                         ))}
