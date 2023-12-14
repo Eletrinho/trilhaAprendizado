@@ -1,8 +1,20 @@
 'use client'
 import Accordion from 'react-bootstrap/Accordion';
 import StarRating from './StarRating';
+import SubSkillForm from './SubSkillForm'
+import axios from 'axios'
 
-export default function SkillAccordion({ id, name, description, confidence, subskills = [] }) {
+export default function SkillAccordion({ id, name, description, confidence, subskills = [], successSubmit }) {
+    
+    const handleSubSkillSubmit = async (subSkillData) => {
+        try {
+            await axios.post('http://localhost:8000/api/subskill/', subSkillData)
+            successSubmit()
+        }
+        catch (err){
+            console.log(err)
+        }
+    }
     return (
         <Accordion.Item eventKey={id}>
             <Accordion.Header>{name}</Accordion.Header>
@@ -22,6 +34,7 @@ export default function SkillAccordion({ id, name, description, confidence, subs
                         ))}
                     </Accordion>
                 }
+                <SubSkillForm skillId={id} onSubSkillSubmit={handleSubSkillSubmit}/>
             </Accordion.Body>
         </Accordion.Item>
     )
