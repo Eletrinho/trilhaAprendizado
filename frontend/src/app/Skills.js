@@ -40,6 +40,12 @@ export default function Skills() {
     fetchData()
   }
 
+  const handleDeleteSkill = async (skillId) => {
+    try {
+      await axios.delete(`http://localhost:8000/api/skill/${skillId}`)
+    } catch (err) { console.log(err) }
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -53,6 +59,7 @@ export default function Skills() {
       confidence={skill.confidence_about}
       subskills={skill.subskills}
       successSubmit={handleSubSkillSubmitSuccess}
+      onDelete={handleDeleteSkill}
     />
   ));
 
