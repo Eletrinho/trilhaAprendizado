@@ -5,8 +5,8 @@ A ideia inicial do projeto não é muito boa mas foi apenas para praticar um pro
 
 
 ## Screenshots
-
-![App Screenshot](https://prnt.sc/ZE83UjKAqu2Y)
+https://prnt.sc/ZE83UjKAqu2Y
+![print](https://prnt.sc/ZE83UjKAqu2Y)
 
 
 ## Stack utilizada
