@@ -16,11 +16,10 @@ export default function SkillForm({ onSubmit }) {
     const handleSubmit = (event) => {
       event.preventDefault()
       onSubmit(inputs)
-      setInputs({
+      setInputs(values => ({ ...values,
         name: '',
         description: '',
-        confidence: null,
-      })
+      }))
   
     }
     return (

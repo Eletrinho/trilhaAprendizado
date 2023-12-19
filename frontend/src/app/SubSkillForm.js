@@ -28,10 +28,10 @@ export default function SubSkillForm({ skillId, onSubSkillSubmit }) {
     }
 
     return (
-        <div className='container bg-light bg-gradient p-4 rounded-1'>
+        <div className='container bg-light bg-gradient p-4 rounded-1 mt-4'>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label className='form-label' htmlFor='name'>Nome da Habilidade</label>
+                    <label className='form-label' htmlFor='name'>Nome da SubHabilidade</label>
                     <input className='form-control' id="name" name="name" value={subSkillData.name} onChange={handleChange} />
                 </div>
                 <label className='form-label' htmlFor='description'>Descrição</label>

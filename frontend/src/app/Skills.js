@@ -40,10 +40,18 @@ export default function Skills() {
     fetchData()
   }
 
-  const handleDeleteSkill = async (skillId) => {
-    try {
-      await axios.delete(`http://localhost:8000/api/skill/${skillId}`)
-    } catch (err) { console.log(err) }
+  const handleDeleteSkill = async (id, skill = true) => {
+    if (skill) {
+      try {
+        await axios.delete(`http://localhost:8000/api/skill/${id}/`)
+        fetchData()
+      } catch (err) { console.log(err) }
+    } else {
+      try {
+        await axios.delete(`http://localhost:8000/api/subskill/${id}/`)
+        fetchData()
+      } catch (err) { console.log(err) }
+    }
   }
 
   useEffect(() => {
@@ -66,7 +74,7 @@ export default function Skills() {
   return (
     <>
       <SkillForm onSubmit={handleSubmitForm} />
-      <div className='container'>
+      <div className='container mt-5'>
         <Accordion alwaysOpen>
           {rows}
         </Accordion>
