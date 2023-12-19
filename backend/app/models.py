@@ -10,7 +10,7 @@ class Skill(models.Model):
                 MaxValueValidator(5),
                 MinValueValidator(1)])
 
-    def _str_(self):
+    def __str__(self):
         return self.name
 
 class SubSkill(models.Model):
@@ -22,5 +22,5 @@ class SubSkill(models.Model):
                 MaxValueValidator(5),
                 MinValueValidator(1)])
 
-    def _str_(self):
+    def __str__(self):
         return self.name
