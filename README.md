@@ -1,7 +1,7 @@
 
 # Trilha para aprendizado
 
-A ideia inicial do projeto não é muito boa mas foi apenas para praticar um projeto fullstack e praticar mais React, mas a ideia consistia em uma aplicação onde a pessoa poderia anotar o que sabe/o que está estudando e o quanto acha que sabe sobre o assunto
+A ideia inicial do projeto não é muito boa mas foi apenas para praticar um projeto fullstack e praticar mais React, mas a ideia consistia em uma aplicação onde a pessoa poderia anotar o que sabe/o que está estudando e o quanto acha que sabe sobre o assunto.
 
 
 ## Screenshots
